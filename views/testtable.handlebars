@@ -1,0 +1,44 @@
+{{#if data.length}}
+    <div class="container">
+        <table class="table">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th>Species</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                    <tr>
+                        <td>{{showNull name}}</td>
+                        <td>{{showNull owner}}</td>
+                        <td>{{showNull species}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+{{else}}
+    <h3>No data found!</h3>
+{{/if}}
+
+<form class="form-horizontal" role="form" method="POST" action="/testtable">
+    <select name="columnName">
+        <option value="" disabled="disabled" selected="selected">Please select a column</option>
+        <option value="name">Name</option>
+        <option value="owner">Owner</option>
+        <option value="species">Species</option>
+    </select>
+
+    <input type="text" name="columnValue"><br>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
